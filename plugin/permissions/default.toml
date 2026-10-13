@@ -1,0 +1,9 @@
+"$schema" = "schemas/schema.json"
+
+[default]
+description = """
+What your app's OWN local frontend needs to open, close and refresh the hosted chat.
+It deliberately excludes `allow-bridge` and `allow-microphone`: those two are granted only
+at runtime, to the chat window and its exact allowed https origins, when the chat opens.
+"""
+permissions = ["allow-open-chat", "allow-close-chat", "allow-account-changed"]

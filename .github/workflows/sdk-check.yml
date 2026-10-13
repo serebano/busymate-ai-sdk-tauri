@@ -1,0 +1,79 @@
+name: SDK checks
+on: [push, pull_request]
+permissions:
+  contents: read
+concurrency:
+  group: sdk-check-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+defaults:
+  run:
+    shell: bash
+jobs:
+  build:
+    name: build (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-15, windows-2022]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Linux webview dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libsoup-3.0-dev \
+            libjavascriptcoregtk-4.1-dev librsvg2-dev libayatana-appindicator3-dev build-essential pkg-config
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Toolchain
+        run: rustc -V && cargo -V && node -v && npm -v
+      - name: Verify release manifest and pinned sources
+        run: python3 scripts/verify-release.py || python scripts/verify-release.py
+      - name: Test the injected chat glue (identity and microphone ports)
+        run: node --test plugin/js-test/chat-init.test.mjs
+      - name: Clippy (plugin)
+        run: cargo clippy -p tauri-plugin-busymate-ai --all-targets -- -D warnings
+      - name: Unit tests (bridge envelopes, origins, microphone requests)
+        run: cargo test -p tauri-plugin-busymate-ai
+      - name: Build the example frontend
+        working-directory: example-app
+        run: npm ci && npm run build
+      - name: Build the example app
+        run: cargo build -p busymate-ai-tauri-example
+      - name: Test the example's settings and backend mint mapping
+        run: cargo test -p busymate-ai-tauri-example
+      - name: Clippy (example)
+        run: cargo clippy -p busymate-ai-tauri-example --all-targets -- -D warnings
+      - name: Plugin permissions are committed and current
+        run: git status --porcelain plugin/permissions && test -z "$(git status --porcelain plugin/permissions)"
+      - name: Package the crate and the JS bindings
+        if: runner.os == 'Linux'
+        run: |
+          cargo package -p tauri-plugin-busymate-ai --no-verify --allow-dirty
+          mkdir -p out
+          cp target/package/tauri-plugin-busymate-ai-1.0.0.crate out/
+          (cd plugin/guest-js && npm pack --pack-destination ../../out)
+          ls -l out
+      - uses: actions/upload-artifact@v4
+        if: runner.os == 'Linux'
+        with:
+          name: busymate-ai-sdk-tauri-1.0.0
+          path: out/*
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: permissions-${{ matrix.os }}
+          path: plugin/permissions
+  sdk-check:
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every OS built, linted and tested
+        run: test "${{ needs.build.result }}" = "success"

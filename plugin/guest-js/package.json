@@ -1,0 +1,27 @@
+{
+  "name": "tauri-plugin-busymate-ai-api",
+  "version": "1.0.0",
+  "description": "JavaScript bindings for tauri-plugin-busymate-ai: open the hosted Busymate chat, refresh identity and observe host events from your app's own frontend",
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serebano/busymate-ai-sdk-tauri.git",
+    "directory": "plugin/guest-js"
+  },
+  "peerDependencies": {
+    "@tauri-apps/api": "^2.10.0"
+  }
+}
