@@ -23,7 +23,7 @@ App-level hooks you register on `tauri::Builder` (Tauri exposes them only there)
 
 | Field | Default | Behavior |
 |---|---|---|
-| `url` | `https://busymate.ai/support/busyproxy?channel=embed&locale=en` | The tenant's actual https chat URL, supported query parameters preserved (`channel`, `locale`, `theme`…). Credentials are refused. Use `channel=embed`: `desktop` is reserved for Busymate's own Console app. |
+| `url` | `https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en` | The tenant's actual https chat URL, supported query parameters preserved (`channel`, `locale`, `theme`…). Credentials are refused. Use `channel=desktop_sdk` (top-level window); `embed` needs an allow-listed parent frame and `desktop` is Busymate's own Console app. |
 | `assistant` | none | Assistant slug; allows exactly `https://<assistant>.busymate.ai`. Required when `identity` is true. |
 | `origins` | `[]` | Extra exact https origins (`https://host[:port]`): your mapped support host, or `https://busymate.ai` for the hosted `/support/<slug>` URL. No wildcards, paths, queries, fragments or credentials — an invalid entry is an error. The chat URL's own origin must be in the allowed set. |
 | `identity` | `true` | Install `window.BusymateBridge` and grant `allow-bridge` to the chat's origins. |

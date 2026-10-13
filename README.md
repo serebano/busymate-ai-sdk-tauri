@@ -1,4 +1,4 @@
-# Busymate AI SDK for Tauri — 1.0.0
+# Busymate AI SDK for Tauri — 1.0.1
 
 Official independent Tauri v2 plugin for Busymate AI hosted chat:
 `tauri-plugin-busymate-ai` (Rust crate) plus `tauri-plugin-busymate-ai-api`
@@ -19,17 +19,17 @@ source or the release files.
 ```toml
 # src-tauri/Cargo.toml
 [dependencies]
-tauri-plugin-busymate-ai = { git = "https://github.com/serebano/busymate-ai-sdk-tauri", tag = "1.0.0" }
+tauri-plugin-busymate-ai = { git = "https://github.com/serebano/busymate-ai-sdk-tauri", tag = "1.0.1" }
 ```
 
-Or download `tauri-plugin-busymate-ai-1.0.0.crate` from the
-[1.0.0 release](https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.0),
+Or download `tauri-plugin-busymate-ai-1.0.1.crate` from the
+[1.0.1 release](https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.1),
 extract it (`tar xzf …crate`) and depend on it with `path = "…"`.
 
 JavaScript bindings (optional, for opening the chat from your frontend):
 
 ```sh
-npm install ./tauri-plugin-busymate-ai-api-1.0.0.tgz @tauri-apps/api
+npm install ./tauri-plugin-busymate-ai-api-1.0.1.tgz @tauri-apps/api
 ```
 
 ## Integrate
@@ -104,15 +104,17 @@ npm run tauri dev          # or: npm run build && cargo run -p busymate-ai-tauri
 ```
 
 The default guest chat is
-`https://busymate.ai/support/busyproxy?channel=embed&locale=en`. The hosted
-product's channels are `hosted_web`, `embed`, `ios`, `android` and `desktop`;
-`desktop` is reserved for Busymate's own Console app, and the product's own
-integration guidance says "desktop shells use the embed channel", so this SDK
-uses `channel=embed`.
+`https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en`.
+`desktop_sdk` is the hosted product's channel for third-party desktop apps on
+the official SDKs: the chat is the window's top-level page with the normal
+chat layout (no Console title-bar inset), and `locale` applies from the first
+frame. Do not use `embed` in a native window (it needs an allow-listed parent
+frame and refuses to start top-level) or `desktop` (Busymate's own Console
+app). Integration guide: [busymate.ai/docs/guides/tauri-sdk](https://busymate.ai/docs/guides/tauri-sdk).
 
 ## Versions and ownership
 
-Platform distribution 1.0.0 is distinct from identity wire 2/build 2.0.0 and
+Platform distribution 1.0.1 is distinct from identity wire 2/build 2.0.0 and
 microphone wire 1/adapter 1.0.0. The [release manifest](release-manifest.json)
 pins the wire-relevant sources and the verbatim [v2 wire contract](CONTRACT-v2.md);
 `python3 scripts/verify-release.py` checks them. This repository is canonical

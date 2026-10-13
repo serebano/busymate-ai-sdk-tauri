@@ -29,7 +29,7 @@ settings, closes any open chat and opens a new chat window through the SDK.
 
 | Control | What it configures |
 |---|---|
-| Chat HTTPS URL | `ChatOptions.url` (default `https://busymate.ai/support/busyproxy?channel=embed&locale=en`). |
+| Chat HTTPS URL | `ChatOptions.url` (default `https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en`). |
 | Locale | Sets the URL's `locale` parameter. |
 | Assistant slug | `ChatOptions.assistant` (default `busyproxy`). |
 | Exact HTTPS origins | `ChatOptions.origins` (default `https://busymate.ai`, the hosted `/support/<slug>` origin). Must include the chat URL's origin; no wildcards or paths. |
