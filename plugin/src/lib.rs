@@ -65,9 +65,11 @@ pub use microphone::{ADAPTER as MICROPHONE_ADAPTER, WIRE as MICROPHONE_WIRE};
 
 /// This SDK's distribution version.
 pub const SDK_VERSION: &str = env!("CARGO_PKG_VERSION");
-/// The default guest chat. `channel=embed` is the hosted product's channel for
-/// desktop shells; `desktop` is reserved for Busymate's own Console app.
-pub const DEFAULT_CHAT_URL: &str = "https://busymate.ai/support/busyproxy?channel=embed&locale=en";
+/// The default guest chat. `channel=desktop_sdk` is the hosted product's channel
+/// for third-party desktop SDK apps: the chat is the window's top-level page.
+/// (`embed` needs an allow-listed parent frame; `desktop` is Busymate's own
+/// Console app.)
+pub const DEFAULT_CHAT_URL: &str = "https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en";
 /// The event your local frontend receives (see [`ChatEvent`]).
 pub const CHAT_EVENT: &str = "busymate-ai://chat";
 

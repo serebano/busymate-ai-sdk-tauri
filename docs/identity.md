@@ -93,10 +93,8 @@ chat origin; a marketing page is not a chat URL.
 
 ## Known interaction with the hosted product
 
-busymate.ai treats a page that has `window.__TAURI_INTERNALS__` as Busymate's
-own macOS Console shell (desktop chrome and its `desktop_*` shell commands).
-Tauri always installs that object, and in a tenant app those commands are
-refused by the ACL, so the hosted page degrades to its web behavior. Until the
-hosted product distinguishes its own shell (it also stamps a
-`BusymateAIConsole/` user agent), verify link opening and window chrome in your
-app; this is tracked as a hosted-product follow-up.
+Every Tauri window has `window.__TAURI_INTERNALS__`. busymate.ai used to take
+any such page for its own Console desktop app (desktop chrome and `desktop_*`
+shell commands); since the fix for serebano/busymate-ai-src#1849 it also
+requires the Console's `BusymateAIConsole/` user-agent token, so a Tauri SDK
+window gets the normal chat layout and opens links through this SDK.

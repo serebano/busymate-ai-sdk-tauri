@@ -170,7 +170,7 @@ mod tests {
 
     #[test]
     fn origin_of_document_urls() {
-        let url = Url::parse("https://busymate.ai/support/busyproxy?channel=embed&locale=en").unwrap();
+        let url = Url::parse("https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en").unwrap();
         assert_eq!(origin_of_url(&url).as_deref(), Some("https://busymate.ai"));
         let port = Url::parse("https://acme.com:8443/x").unwrap();
         assert_eq!(origin_of_url(&port).as_deref(), Some("https://acme.com:8443"));

@@ -1,6 +1,6 @@
 {
   "name": "tauri-plugin-busymate-ai-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript bindings for tauri-plugin-busymate-ai: open the hosted Busymate chat, refresh identity and observe host events from your app's own frontend",
   "type": "module",
   "main": "./index.js",

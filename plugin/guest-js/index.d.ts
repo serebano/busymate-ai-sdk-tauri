@@ -1,6 +1,6 @@
 export declare const DEFAULT_CHAT_URL: string
 export declare const CHAT_EVENT: 'busymate-ai://chat'
-export declare const SDK_VERSION: '1.0.0'
+export declare const SDK_VERSION: '1.0.1'
 export declare const IDENTITY_BUILD: '2.0.0'
 export declare const MICROPHONE_ADAPTER: '1.0.0'
 
