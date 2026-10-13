@@ -175,8 +175,8 @@ mod tests {
         assert!(matches!(decode(403, b"{}", "n"), Ok(None)));
         assert!(matches!(decode(500, b"{}", "n"), Err(MintError::Failed(_))));
         assert!(matches!(decode(200, b"nope", "n"), Err(MintError::Failed(_))));
-        assert!(matches!(decode(200, br#"{"token":"","nonce":"n"}"#, "n"), Err(_)));
-        assert!(matches!(decode(200, br#"{"token":"t","nonce":"other"}"#, "n"), Err(_)));
+        assert!(decode(200, br#"{"token":"","nonce":"n"}"#, "n").is_err());
+        assert!(decode(200, br#"{"token":"t","nonce":"other"}"#, "n").is_err());
         let ok = decode(200, br#"{"token":"t","nonce":"n"}"#, "n").unwrap().unwrap();
         assert_eq!((ok.token.as_str(), ok.nonce.as_str()), ("t", "n"));
     }
