@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Busymate AI SDK example</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Busymate AI SDK for Tauri</h1>
+        <p class="versions" id="versions"></p>
+      </header>
+
+      <form id="settings" autocomplete="off">
+        <fieldset>
+          <legend>Chat</legend>
+          <label>Chat HTTPS URL <input name="url" type="url" required /></label>
+          <label>Locale <input name="locale" placeholder="en" /></label>
+          <label>Assistant slug <input name="assistant" /></label>
+          <label>Exact HTTPS origins <span class="hint">comma or newline separated; must include the chat URL's origin</span>
+            <textarea name="origins" rows="2"></textarea></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Identity (wire v2, build 2.0.0)</legend>
+          <label class="check"><input name="identity" type="checkbox" /> Install the identity bridge</label>
+          <label class="check"><input name="mode" type="radio" value="guest" /> Guest</label>
+          <label class="check"><input name="mode" type="radio" value="identified" /> Identified — your backend mints</label>
+          <label>Account ID <span class="hint">your app's signed-in user; not a login</span><input name="accountId" /></label>
+          <label>Authenticated mint endpoint <input name="mintUrl" type="url" placeholder="https://api.example.com/busymate/mint" /></label>
+          <label>Backend session token <span class="hint">memory only; never a signing or admin key</span><input name="sessionToken" type="password" /></label>
+          <label class="check"><input name="handleCloseAction" type="checkbox" /> Handle <code>close</code> through onAction (otherwise the onClose fallback closes the window)</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Microphone (adapter 1.0.0)</legend>
+          <label class="check"><input name="microphone" type="checkbox" /> Enable the tap-triggered OS permission adapter</label>
+        </fieldset>
+
+        <p class="error" id="error" role="alert"></p>
+        <div class="actions">
+          <button type="submit">Apply and open chat</button>
+          <button type="button" id="close">Close chat</button>
+          <button type="button" id="account">accountChanged()</button>
+          <button type="button" id="reset">Reset</button>
+        </div>
+      </form>
+
+      <section>
+        <h2>Callbacks <button type="button" id="clear" class="small">Clear</button></h2>
+        <ol id="log" reversed></ol>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+[package]
+name = "tauri-plugin-busymate-ai"
+version = "1.0.0"
+edition = "2021"
+rust-version = "1.77.2"
+description = "Official versioned Busymate AI SDK for Tauri: identity, WebView and microphone integration"
+repository = "https://github.com/serebano/busymate-ai-sdk-tauri"
+readme = "README.md"
+keywords = ["tauri", "tauri-plugin", "busymate", "chat"]
+links = "tauri-plugin-busymate-ai"
+# Distributed as tagged source and a release .crate file; nothing is published to crates.io.
+publish = false
+include = [
+  "src/**",
+  "permissions/**",
+  "build.rs",
+  "README.md",
+]
+
+[dependencies]
+tauri = "2.12"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+tokio = { version = "1", features = ["sync", "time"] }
+open = "5"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6"
+objc2-foundation = "0.3"
+block2 = "0.6"
+
+[target.'cfg(windows)'.dependencies]
+webview2-com = "0.39"
+winreg = "0.55"
+
+[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd", target_os = "netbsd"))'.dependencies]
+webkit2gtk = "2.0"
+
+[build-dependencies]
+tauri-plugin = { version = "2", features = ["build"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt", "macros", "time", "sync"] }

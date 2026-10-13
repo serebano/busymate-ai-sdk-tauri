@@ -5,3 +5,4 @@ dist/
 *.crate
 example-app/src-tauri/gen/
 .DS_Store
+.worktrees/

@@ -1,0 +1,19 @@
+{
+  "name": "busymate-sdk-example-tauri",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "2.12.3",
+    "tauri-plugin-busymate-ai-api": "file:../plugin/guest-js"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.2",
+    "vite": "6.4.4"
+  }
+}

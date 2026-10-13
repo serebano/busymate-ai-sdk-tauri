@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "The example's own LOCAL settings window. The remote chat window gets nothing from this file: the plugin grants it only the bridge and microphone commands, for its exact https origins, when it opens.",
+  "windows": ["main"],
+  "permissions": ["core:default", "busymate-ai:default"]
+}

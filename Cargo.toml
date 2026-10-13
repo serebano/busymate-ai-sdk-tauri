@@ -1,0 +1,7 @@
+[workspace]
+resolver = "2"
+members = ["plugin", "example-app/src-tauri"]
+
+[profile.dev]
+# CI builds every OS from scratch; skip debug info to keep runners fast.
+debug = 0
