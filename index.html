@@ -41,7 +41,7 @@ section{padding:36px 0;border-top:1px solid var(--border)}
 h2{font-size:24px;letter-spacing:-.025em;font-weight:600;margin:0 0 6px}
 .sub{color:var(--muted);margin:0 0 22px;max-width:70ch}
 .gallery{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
-.gallery.phones{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.gallery.phones{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
 figure.shot{margin:0;display:flex;flex-direction:column;gap:10px}
 figure.shot a{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow)}
 figure.shot img{display:block;width:100%;height:auto}
@@ -97,7 +97,10 @@ footer .wrap{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;
 <section id="screenshots">
   <h2>Example app</h2>
   <p class="sub">example-app/ is a real Tauri app that consumes the plugin and its JS bindings, with a settings view and a callbacks log.</p>
-  <div class="pending"><p class="pending-title">Screenshots coming soon</p><p>The Tauri example needs a Rust toolchain and a full cargo build, which the capture machine did not have during this run. Real screenshots of the example app follow.</p></div>
+  <div class="gallery phones"><figure class="shot portrait"><a href="shots/01-settings.png"><img src="shots/01-settings.png" alt="The example's settings view: chat URL on channel=desktop_sdk, locale, assistant slug, exact origins, identity bridge mode and the microphone adapter." loading="lazy" width="820" height="900"></a><figcaption>The example's settings view: chat URL on channel=desktop_sdk, locale, assistant slug, exact origins, identity bridge mode and the microphone adapter.</figcaption></figure>
+<figure class="shot portrait"><a href="shots/02-chat-open.png"><img src="shots/02-chat-open.png" alt="The chat window opened by open_chat: the hosted chat as the window's top-level page, with the bridge and microphone commands granted only to this window." loading="lazy" width="420" height="680"></a><figcaption>The chat window opened by open_chat: the hosted chat as the window's top-level page, with the bridge and microphone commands granted only to this window.</figcaption></figure>
+<figure class="shot portrait"><a href="shots/03-conversation.png"><img src="shots/03-conversation.png" alt="A conversation answered by the demos workspace, with the composer and microphone control." loading="lazy" width="420" height="680"></a><figcaption>A conversation answered by the demos workspace, with the composer and microphone control.</figcaption></figure></div>
+<p class="credit">Captured on macOS 26 running the example Tauri 2.12 app (debug build, WKWebView) against the Busymate AI demos workspace, 15 October 2026. Real app, real hosted chat.</p>
 </section>
 
 <section id="install">
