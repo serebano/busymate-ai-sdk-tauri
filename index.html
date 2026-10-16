@@ -77,15 +77,15 @@ footer .wrap{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="https://busymate.ai" aria-label="Busymate AI"><svg class="mark" viewBox="0 0 1024 1024" aria-hidden="true" focusable="false"><g transform="translate(-233.745 -234.382) scale(1.45636)"><g transform="translate(59.796 -13.688) scale(1.02774)"><g transform="translate(512 256) skewX(-12)"><g fill="none" stroke="currentColor" stroke-width="70" stroke-linecap="butt" stroke-linejoin="round"><g transform="translate(-46.5 0) scale(-1 1)"><path stroke-linecap="square" d="M0 0 V512"/><path d="M0 0 H132 Q240 0 240 96 V160 Q240 256 132 256 H0"/><path transform="translate(0 256)" d="M0 0 H132 Q240 0 240 96 V160 Q240 256 132 256 H0"/></g><g transform="translate(11.5 0)"><path d="M35 0 H132 Q240 0 240 96 V160 Q240 256 132 256 H35"/><path transform="translate(0 256)" d="M35 0 H132 Q240 0 240 96 V160 Q240 256 132 256 H35"/></g></g></g></g></g></svg><span>Busymate AI <small>· SDK for Tauri</small></span></a>
-  <nav class="links" aria-label="Links"><a href="https://github.com/serebano/busymate-ai-sdk-tauri">Repository</a><a href="https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.1">Release 1.0.1</a><a href="https://busymate.ai/docs/guides/tauri-sdk">Guide</a></nav>
+  <nav class="links" aria-label="Links"><a href="https://github.com/serebano/busymate-ai-sdk-tauri">Repository</a><a href="https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.2">Release 1.0.2</a><a href="https://busymate.ai/docs/guides/tauri-sdk">Guide</a></nav>
 </div></header>
 
 <main class="wrap">
 <div class="hero">
   <h1>Busymate AI SDK for Tauri</h1>
   <p class="lead">Busymate AI hosted chat in its own Tauri v2 webview window, with the identity bridge answered from your app's Rust side and a tap-triggered microphone adapter.</p>
-  <div class="badges"><span class="version"><span class="dot"></span>Version 1.0.1</span><span class="chip">identity wire v2 · build 2.0.0</span><span class="chip">microphone adapter 1.0.0</span><span class="chip">Tauri 2.12+ · Rust 1.77.2+</span><span class="chip">channel=desktop_sdk</span></div>
-  <div class="cta"><a class="btn primary" href="https://busymate.ai/docs/guides/tauri-sdk">Integration guide</a><a class="btn" href="https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.1">Download 1.0.1</a><a class="btn" href="https://github.com/serebano/busymate-ai-sdk-tauri">Source on GitHub</a></div>
+  <div class="badges"><span class="version"><span class="dot"></span>Version 1.0.2</span><span class="chip">identity wire v2 · build 2.0.0</span><span class="chip">microphone adapter 1.0.0</span><span class="chip">Tauri 2.12+ · Rust 1.77.2+</span><span class="chip">channel=desktop_sdk</span></div>
+  <div class="cta"><a class="btn primary" href="https://busymate.ai/docs/guides/tauri-sdk">Integration guide</a><a class="btn" href="https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.2">Download 1.0.2</a><a class="btn" href="https://github.com/serebano/busymate-ai-sdk-tauri">Source on GitHub</a></div>
 </div>
 
 <section id="what">
@@ -106,9 +106,9 @@ footer .wrap{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;
 <section id="install">
   <h2>Install</h2>
   <p class="sub">Nothing is published to crates.io or npm; depend on the tagged source or the release files.</p>
-  <ol class="steps"><li><p>Add the plugin to <code>src-tauri/Cargo.toml</code> at the <code>1.0.1</code> tag (or extract <code>tauri-plugin-busymate-ai-1.0.1.crate</code> from the release and use <code>path</code>).</p><pre><code>[dependencies]
-tauri-plugin-busymate-ai = { git = &quot;https://github.com/serebano/busymate-ai-sdk-tauri&quot;, tag = &quot;1.0.1&quot; }</code></pre></li>
-<li><p>Optional JavaScript bindings for opening the chat from your frontend.</p><pre><code>npm install ./tauri-plugin-busymate-ai-api-1.0.1.tgz @tauri-apps/api</code></pre></li>
+  <ol class="steps"><li><p>Add the plugin to <code>src-tauri/Cargo.toml</code> at the <code>1.0.2</code> tag (or extract <code>tauri-plugin-busymate-ai-1.0.2.crate</code> from the release and use <code>path</code>).</p><pre><code>[dependencies]
+tauri-plugin-busymate-ai = { git = &quot;https://github.com/serebano/busymate-ai-sdk-tauri&quot;, tag = &quot;1.0.2&quot; }</code></pre></li>
+<li><p>Optional JavaScript bindings for opening the chat from your frontend.</p><pre><code>npm install ./tauri-plugin-busymate-ai-api-1.0.2.tgz @tauri-apps/api</code></pre></li>
 <li><p>Register the plugin with your <code>account</code>, <code>mint</code> and <code>on_close</code> callbacks, add <code>.on_permission_request(tauri_plugin_busymate_ai::permission_handler)</code>, then call <code>app.busymate_ai().open_chat(ChatOptions { .. })</code>. Add <code>busymate-ai:default</code> to your local window's capability only if your frontend calls the bindings.</p></li></ol>
 </section>
 
@@ -125,15 +125,19 @@ tauri-plugin-busymate-ai = { git = &quot;https://github.com/serebano/busymate-ai
   <h2>Links</h2>
   <ul class="linklist">
     <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri">serebano/busymate-ai-sdk-tauri<span>Source, example app, docs, changelog</span></a></li>
-    <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.1">Release 1.0.1<span>Tagged, versioned artifacts</span></a></li>
+    <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.2">Release 1.0.2<span>Tagged, versioned artifacts</span></a></li>
+    <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri/releases/latest/download/microphone.rs">Microphone adapter: microphone.rs<span>Latest release asset (adapter 1.0.0, wire 1)</span></a></li>
+    <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri/releases/download/1.0.2/microphone.rs">microphone.rs in 1.0.2<span>Pinned release asset</span></a></li>
+    <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri/releases/download/1.0.2/SHA256SUMS">SHA256SUMS<span>Checksums for every 1.0.2 asset</span></a></li>
+    <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri/blob/main/docs/microphone.md#download-the-adapter">Microphone guide<span>Install, permission flow, adapter download</span></a></li>
     <li><a href="https://busymate.ai/docs/guides/tauri-sdk">busymate.ai/docs/guides/tauri-sdk<span>Step-by-step integration guide</span></a></li>
-    <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri/blob/main/CHANGELOG.md">Changelog<span>What changed in 1.0.1</span></a></li>
+    <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri/blob/main/CHANGELOG.md">Changelog<span>What changed in 1.0.2</span></a></li>
     <li><a href="https://github.com/serebano/busymate-ai-sdk-tauri/blob/main/CONTRACT-v2.md">Identity wire contract v2<span>Frozen bridge build 2.0.0</span></a></li>
     <li><a href="https://busymate.ai/docs/guides/app-bridge-v2">Identity bridge compatibility<span>Across every Busymate AI SDK</span></a></li>
   </ul>
 </section>
 </main>
 
-<footer><div class="wrap"><span>© Busymate AI · Official SDK for Tauri 1.0.1</span><span>Static page. No scripts, no cookies, no tracking.</span></div></footer>
+<footer><div class="wrap"><span>© Busymate AI · Official SDK for Tauri 1.0.2</span><span>Static page. No scripts, no cookies, no tracking.</span></div></footer>
 </body>
 </html>
