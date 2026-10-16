@@ -57,13 +57,13 @@ jobs:
         run: |
           cargo package -p tauri-plugin-busymate-ai --no-verify --allow-dirty
           mkdir -p out
-          cp target/package/tauri-plugin-busymate-ai-1.0.1.crate out/
+          cp target/package/tauri-plugin-busymate-ai-1.0.2.crate out/
           (cd plugin/guest-js && npm pack --pack-destination ../../out)
           ls -l out
       - uses: actions/upload-artifact@v4
         if: runner.os == 'Linux'
         with:
-          name: busymate-ai-sdk-tauri-1.0.1
+          name: busymate-ai-sdk-tauri-1.0.2
           path: out/*
       - uses: actions/upload-artifact@v4
         if: always()
