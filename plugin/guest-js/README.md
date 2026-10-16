@@ -1,11 +1,11 @@
-# tauri-plugin-busymate-ai-api 1.0.1
+# tauri-plugin-busymate-ai-api 1.0.2
 
 JavaScript bindings for [`tauri-plugin-busymate-ai`](https://github.com/serebano/busymate-ai-sdk-tauri),
 for your app's **own local frontend**. Install the release tarball (no npm registry
 package is published):
 
 ```sh
-npm install ./tauri-plugin-busymate-ai-api-1.0.1.tgz @tauri-apps/api
+npm install ./tauri-plugin-busymate-ai-api-1.0.2.tgz @tauri-apps/api
 ```
 
 ```js

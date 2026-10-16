@@ -1,12 +1,15 @@
 {
   "sdk": "Busymate AI tauri",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "identityWire": {
     "v2": 2,
     "v2Build": "2.0.0"
   },
   "microphoneWire": 1,
   "microphoneAdapter": "1.0.0",
+  "adapterAssets": [
+    "plugin/src/microphone.rs"
+  ],
   "defaultChannel": "desktop_sdk",
   "files": {
     "plugin/src/bridge.rs": "84f698e1d0892fdaa9afdad39532098f2c3ed5b38be31e256998d35eda772af5",

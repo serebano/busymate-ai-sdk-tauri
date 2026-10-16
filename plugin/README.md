@@ -1,4 +1,4 @@
-# tauri-plugin-busymate-ai 1.0.1
+# tauri-plugin-busymate-ai 1.0.2
 
 Official Busymate AI SDK for Tauri v2: the hosted chat in its own webview
 window, the identity bridge (wire v2, build 2.0.0) answered by your app's Rust

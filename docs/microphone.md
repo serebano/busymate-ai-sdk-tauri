@@ -66,6 +66,18 @@ grants access in System Settings › Privacy & Security › Microphone and taps
 pending means a late grant cannot start capture. Cancelling does not dismiss an
 OS prompt or undo an OS grant.
 
+## Download the adapter
+
+`microphone.rs` (microphone adapter 1.0.0, wire 1) ships in this SDK and is attached to every GitHub release, with `SHA256SUMS`:
+
+- Latest release: https://github.com/serebano/busymate-ai-sdk-tauri/releases/latest/download/microphone.rs
+- Pinned, SDK 1.0.2: https://github.com/serebano/busymate-ai-sdk-tauri/releases/download/1.0.2/microphone.rs
+- Checksums: https://github.com/serebano/busymate-ai-sdk-tauri/releases/download/1.0.2/SHA256SUMS (`shasum -a 256 -c SHA256SUMS --ignore-missing`)
+
+The SDK installs the adapter itself; the standalone file is for audit and vendoring.
+
+This repository and its releases are the only source of the adapter. busymate.ai no longer publishes adapter copies; its legacy `https://busymate.ai/sdk/microphone/1.0.0/` files stay frozen for existing integrations.
+
 ## Troubleshooting
 
 | Symptom | Check |

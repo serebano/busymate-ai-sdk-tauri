@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+Release packaging: the microphone adapter source (`microphone.rs` sha256 `2f2156f4c59015490fbad03930d078574ceb24f2fad5e82b7553bde9fcc7f458`; adapter 1.0.0, wire 1) is attached to every GitHub release and listed in `SHA256SUMS`; docs link the release ([Download the adapter](docs/microphone.md#download-the-adapter)). `release-manifest.json` lists `adapterAssets` and `scripts/verify-release.py` checks them. No adapter or bridge code change (refs serebano/busymate-ai-src#2156).
+
 ## 1.0.1
 
 Default guest chat now uses `channel=desktop_sdk`

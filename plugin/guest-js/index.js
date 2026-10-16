@@ -8,7 +8,7 @@ import { listen } from '@tauri-apps/api/event'
 export const DEFAULT_CHAT_URL = 'https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en'
 /** The event the plugin emits to your frontend. */
 export const CHAT_EVENT = 'busymate-ai://chat'
-export const SDK_VERSION = '1.0.1'
+export const SDK_VERSION = '1.0.2'
 export const IDENTITY_BUILD = '2.0.0'
 export const MICROPHONE_ADAPTER = '1.0.0'
 
