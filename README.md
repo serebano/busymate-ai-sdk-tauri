@@ -110,7 +110,7 @@ the official SDKs: the chat is the window's top-level page with the normal
 chat layout (no Console title-bar inset), and `locale` applies from the first
 frame. Do not use `embed` in a native window (it needs an allow-listed parent
 frame and refuses to start top-level) or `desktop` (Busymate's own Console
-app). Integration guide: [busymate.ai/docs/guides/tauri-sdk](https://busymate.ai/docs/guides/tauri-sdk).
+app). Integration guide: [busymate.ai/docs/guides/tauri-sdk](https://busymate.ai/docs/guides/tauri-sdk?utm_source=github&utm_medium=readme&utm_campaign=busymate-ai-sdk-tauri).
 
 ## Download the adapter
 
