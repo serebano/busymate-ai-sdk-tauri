@@ -138,7 +138,9 @@ for the Tauri SDK. Frozen web/shared contracts remain owned by the hosted
 product; busymate.ai publishes the human integration guides.
 
 `sdk-check` builds, lints and unit-tests the plugin and builds and tests the
-example app on Ubuntu, macOS and Windows runners. It does not certify OS
+example app on our own Linux and macOS runners, and type-checks both for Windows
+with clippy for `x86_64-pc-windows-gnu` from Linux (there is no Windows runner,
+so nothing is executed on Windows). It does not certify OS
 permission dialogs, the hosted chat's live behavior inside a Tauri window, app
 store or notarized distribution, or your backend integration. See
 [changelog](CHANGELOG.md).
