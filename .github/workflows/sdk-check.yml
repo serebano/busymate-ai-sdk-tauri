@@ -22,6 +22,8 @@ jobs:
           - { os: linux, runner: '"ci-sdk-tauri"' }
           - { os: macos, runner: '["self-hosted","macOS","bm-mac"]' }
     runs-on: ${{ fromJSON(matrix.runner) }}
+    # Mac jobs: the timeout includes the wait for the shared Mac's one-job lock.
+    timeout-minutes: ${{ contains(toJSON(matrix), 'bm-mac') && 150 || 45 }}
     steps:
       - uses: actions/checkout@v4
       - name: Linux webview dependencies present (runner class sdk)
@@ -76,6 +78,7 @@ jobs:
   windows-cross:
     name: windows (cross-check from Linux)
     runs-on: ci-sdk-tauri
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
@@ -96,8 +99,9 @@ jobs:
         run: cargo clippy --target x86_64-pc-windows-gnu -p tauri-plugin-busymate-ai -p busymate-ai-tauri-example --all-targets -- -D warnings
   sdk-check:
     needs: [build, windows-cross]
-    if: always()
+    if: ${{ always() && !cancelled() }}  # a cancelled run must not turn the gate red
     runs-on: ci-sdk-tauri
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - name: No GitHub-hosted runners (runs-on lint)
