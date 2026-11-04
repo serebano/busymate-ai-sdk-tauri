@@ -105,7 +105,8 @@ Build your app and verify on real machines for each OS you ship:
    non-allowed origin is refused.
 6. Camera requests and other origins are refused.
 
-`sdk-check` compiles the adapter on all three OSes and unit-tests the request
+`sdk-check` compiles the adapter on Linux and macOS, type-checks it for Windows
+(clippy, cross target from Linux), and unit-tests the request
 parsing and the injected glue. It cannot show OS dialogs: none of the
 permission flows above have been exercised on a physical machine for 1.0.0.
 Record those results with your own release.
