@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4
+
+The default hosted chat address is now `https://busymate.ai/chat/w/<assistant>` (default guest chat `https://busymate.ai/chat/w/busyproxy?channel=desktop_sdk&locale=en`), the single chat path across busymate.ai. Existing `/support/<assistant>` addresses keep working: Busymate redirects them permanently and the SDK only checks the origin, so a stored URL needs no migration. The identity wire v2 (build 2.0.0) and the microphone adapter 1.0.0 are unchanged (serebano/busymate-ai-src#6080). Distribution 1.0.3 is skipped on this platform so every Busymate SDK shares one 1.0.4 release.
+
 ## 1.0.2
 
 Release packaging: the microphone adapter source (`microphone.rs` sha256 `2f2156f4c59015490fbad03930d078574ceb24f2fad5e82b7553bde9fcc7f458`; adapter 1.0.0, wire 1) is attached to every GitHub release and listed in `SHA256SUMS`; docs link the release ([Download the adapter](docs/microphone.md#download-the-adapter)). `release-manifest.json` lists `adapterAssets` and `scripts/verify-release.py` checks them. No adapter or bridge code change (refs serebano/busymate-ai-src#2156).

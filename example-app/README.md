@@ -29,10 +29,10 @@ settings, closes any open chat and opens a new chat window through the SDK.
 
 | Control | What it configures |
 |---|---|
-| Chat HTTPS URL | `ChatOptions.url` (default `https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en`). |
+| Chat HTTPS URL | `ChatOptions.url` (default `https://busymate.ai/chat/w/busyproxy?channel=desktop_sdk&locale=en`). |
 | Locale | Sets the URL's `locale` parameter. |
 | Assistant slug | `ChatOptions.assistant` (default `busyproxy`). |
-| Exact HTTPS origins | `ChatOptions.origins` (default `https://busymate.ai`, the hosted `/support/<slug>` origin). Must include the chat URL's origin; no wildcards or paths. |
+| Exact HTTPS origins | `ChatOptions.origins` (default `https://busymate.ai`, the hosted `/chat/w/<slug>` origin). Must include the chat URL's origin; no wildcards or paths. |
 | Install the identity bridge | `ChatOptions.identity`. |
 | Guest / Identified | The example's `account` callback returns nothing (guest) or the account ID. An entered ID is **not** a login. |
 | Authenticated mint endpoint, backend session token | The example's `mint` callback POSTs `{nonce, aud, reason, assistant, origin}` to YOUR https endpoint, with the optional bearer token (memory only). 401/403 = signed out; redirects are refused; the reply must be `{"token":"…","nonce":"<same nonce>"}`. |
