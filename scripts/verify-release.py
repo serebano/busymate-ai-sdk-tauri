@@ -6,14 +6,14 @@ for name, expected in m['files'].items():
     actual = hashlib.sha256((root / name).read_bytes()).hexdigest()
     assert actual == expected, f"Pinned source changed: {name}"
     print(f"verified {name} {actual}")
-assert m['version'] == '1.0.2'
+assert m['version'] == '1.0.4'
 assert m['identityWire']['v2'] == 2 and m['identityWire']['v2Build'] == '2.0.0'
 assert m['microphoneWire'] == 1 and m['microphoneAdapter'] == '1.0.0'
 
 # Every distribution surface states the same versions.
 crate = (root / 'plugin/Cargo.toml').read_text()
-assert re.search(r'^version = "1\.0\.2"$', crate, re.M), 'plugin crate version'
-assert json.loads((root / 'plugin/guest-js/package.json').read_text())['version'] == '1.0.2'
+assert re.search(r'^version = "1\.0\.4"$', crate, re.M), 'plugin crate version'
+assert json.loads((root / 'plugin/guest-js/package.json').read_text())['version'] == '1.0.4'
 assert m['defaultChannel'] == 'desktop_sdk', 'default channel'
 assert "channel=desktop_sdk&" in (root / 'plugin/src/lib.rs').read_text(), 'Rust default chat URL'
 assert "channel=desktop_sdk&" in (root / 'plugin/guest-js/index.js').read_text(), 'JS default chat URL'

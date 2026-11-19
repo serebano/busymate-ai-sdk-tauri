@@ -1,6 +1,6 @@
 {
   "sdk": "Busymate AI tauri",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "identityWire": {
     "v2": 2,
     "v2Build": "2.0.0"

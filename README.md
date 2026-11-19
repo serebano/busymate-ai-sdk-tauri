@@ -1,4 +1,4 @@
-# Busymate AI SDK for Tauri — 1.0.2
+# Busymate AI SDK for Tauri — 1.0.4
 
 Official independent Tauri v2 plugin for Busymate AI hosted chat:
 `tauri-plugin-busymate-ai` (Rust crate) plus `tauri-plugin-busymate-ai-api`
@@ -19,17 +19,17 @@ source or the release files.
 ```toml
 # src-tauri/Cargo.toml
 [dependencies]
-tauri-plugin-busymate-ai = { git = "https://github.com/serebano/busymate-ai-sdk-tauri", tag = "1.0.2" }
+tauri-plugin-busymate-ai = { git = "https://github.com/serebano/busymate-ai-sdk-tauri", tag = "1.0.4" }
 ```
 
-Or download `tauri-plugin-busymate-ai-1.0.2.crate` from the
-[1.0.2 release](https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.2),
+Or download `tauri-plugin-busymate-ai-1.0.4.crate` from the
+[1.0.4 release](https://github.com/serebano/busymate-ai-sdk-tauri/releases/tag/1.0.4),
 extract it (`tar xzf …crate`) and depend on it with `path = "…"`.
 
 JavaScript bindings (optional, for opening the chat from your frontend):
 
 ```sh
-npm install ./tauri-plugin-busymate-ai-api-1.0.2.tgz @tauri-apps/api
+npm install ./tauri-plugin-busymate-ai-api-1.0.4.tgz @tauri-apps/api
 ```
 
 ## Integrate
@@ -104,7 +104,7 @@ npm run tauri dev          # or: npm run build && cargo run -p busymate-ai-tauri
 ```
 
 The default guest chat is
-`https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en`.
+`https://busymate.ai/chat/w/busyproxy?channel=desktop_sdk&locale=en`.
 `desktop_sdk` is the hosted product's channel for third-party desktop apps on
 the official SDKs: the chat is the window's top-level page with the normal
 chat layout (no Console title-bar inset), and `locale` applies from the first
@@ -117,8 +117,8 @@ app). Integration guide: [busymate.ai/docs/guides/tauri-sdk](https://busymate.ai
 `microphone.rs` (microphone adapter 1.0.0, wire 1) ships in this SDK and is attached to every GitHub release, with `SHA256SUMS`:
 
 - Latest release: https://github.com/serebano/busymate-ai-sdk-tauri/releases/latest/download/microphone.rs
-- Pinned, SDK 1.0.2: https://github.com/serebano/busymate-ai-sdk-tauri/releases/download/1.0.2/microphone.rs
-- Checksums: https://github.com/serebano/busymate-ai-sdk-tauri/releases/download/1.0.2/SHA256SUMS (`shasum -a 256 -c SHA256SUMS --ignore-missing`)
+- Pinned, SDK 1.0.4: https://github.com/serebano/busymate-ai-sdk-tauri/releases/download/1.0.4/microphone.rs
+- Checksums: https://github.com/serebano/busymate-ai-sdk-tauri/releases/download/1.0.4/SHA256SUMS (`shasum -a 256 -c SHA256SUMS --ignore-missing`)
 
 The SDK installs the adapter itself; the standalone file is for audit and vendoring.
 
@@ -130,7 +130,7 @@ Every release attaches each `adapterAssets` file from [release-manifest.json](re
 
 ## Versions and ownership
 
-Platform distribution 1.0.2 is distinct from identity wire 2/build 2.0.0 and
+Platform distribution 1.0.4 is distinct from identity wire 2/build 2.0.0 and
 microphone wire 1/adapter 1.0.0. The [release manifest](release-manifest.json)
 pins the wire-relevant sources and the verbatim [v2 wire contract](CONTRACT-v2.md);
 `python3 scripts/verify-release.py` checks them. This repository is canonical

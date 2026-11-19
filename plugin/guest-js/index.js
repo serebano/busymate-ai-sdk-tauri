@@ -5,10 +5,10 @@ import { invoke } from '@tauri-apps/api/core'
 import { listen } from '@tauri-apps/api/event'
 
 /** Default guest chat. `channel=desktop_sdk` is the hosted product's channel for third-party desktop SDK apps. */
-export const DEFAULT_CHAT_URL = 'https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en'
+export const DEFAULT_CHAT_URL = 'https://busymate.ai/chat/w/busyproxy?channel=desktop_sdk&locale=en'
 /** The event the plugin emits to your frontend. */
 export const CHAT_EVENT = 'busymate-ai://chat'
-export const SDK_VERSION = '1.0.2'
+export const SDK_VERSION = '1.0.4'
 export const IDENTITY_BUILD = '2.0.0'
 export const MICROPHONE_ADAPTER = '1.0.0'
 

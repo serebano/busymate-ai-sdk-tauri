@@ -69,7 +69,7 @@ pub const SDK_VERSION: &str = env!("CARGO_PKG_VERSION");
 /// for third-party desktop SDK apps: the chat is the window's top-level page.
 /// (`embed` needs an allow-listed parent frame; `desktop` is Busymate's own
 /// Console app.)
-pub const DEFAULT_CHAT_URL: &str = "https://busymate.ai/support/busyproxy?channel=desktop_sdk&locale=en";
+pub const DEFAULT_CHAT_URL: &str = "https://busymate.ai/chat/w/busyproxy?channel=desktop_sdk&locale=en";
 /// The event your local frontend receives (see [`ChatEvent`]).
 pub const CHAT_EVENT: &str = "busymate-ai://chat";
 
