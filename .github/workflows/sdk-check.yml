@@ -25,15 +25,16 @@ jobs:
     # Mac jobs: the timeout includes the wait for the shared Mac's one-job lock.
     timeout-minutes: ${{ contains(toJSON(matrix), 'bm-mac') && 150 || 45 }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Linux webview dependencies present (runner class sdk)
         if: runner.os == 'Linux'
         run: pkg-config --exists webkit2gtk-4.1 gtk+-3.0 libsoup-3.0 javascriptcoregtk-4.1 librsvg-2.0 ayatana-appindicator3-0.1
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@39008827e6b4319a349e9a42dfc90579dd25f1ca # stable
         with:
+          toolchain: stable
           components: clippy
-      - uses: Swatinem/rust-cache@v2
-      - uses: actions/setup-node@v4
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '22'
       - name: Toolchain
@@ -65,12 +66,12 @@ jobs:
           cp target/package/tauri-plugin-busymate-ai-1.0.4.crate out/
           (cd plugin/guest-js && npm pack --pack-destination ../../out)
           ls -l out
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: runner.os == 'Linux'
         with:
           name: busymate-ai-sdk-tauri-1.0.4
           path: out/*
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: permissions-${{ matrix.os }}
@@ -80,13 +81,14 @@ jobs:
     runs-on: ci-sdk-tauri
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dtolnay/rust-toolchain@39008827e6b4319a349e9a42dfc90579dd25f1ca # stable
         with:
+          toolchain: stable
           components: clippy
           targets: x86_64-pc-windows-gnu
-      - uses: Swatinem/rust-cache@v2
-      - uses: actions/setup-node@v4
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '22'
       - name: Build the example frontend (embedded by the example crate)
@@ -103,7 +105,7 @@ jobs:
     runs-on: ci-sdk-tauri
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: No GitHub-hosted runners (runs-on lint)
         run: python3 .github/runs-on-lint.py
       - name: Every OS built, linted and tested
