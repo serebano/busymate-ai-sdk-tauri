@@ -1,5 +1,8 @@
 name: SDK checks
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -18,13 +21,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - { os: linux, runner: '"ci-sdk-tauri"' }
-          - { os: macos, runner: '["self-hosted","macOS","bm-mac"]' }
+        # The macOS leg runs on the shared Mac only for manual dispatch (owner/coordinator 2026-11-26, Mac load
+        # incidents); push and pull_request run the k8s Linux leg + windows-cross. The Mac waits for load1 < 20 and
+        # refuses to start under 40 GiB free.
+        include: ${{ fromJSON(github.event_name == 'workflow_dispatch' && '[{"os":"linux","runner":"\"ci-sdk-tauri\""},{"os":"macos","runner":"[\"self-hosted\",\"macOS\",\"bm-mac\"]"}]' || '[{"os":"linux","runner":"\"ci-sdk-tauri\""}]') }}
     runs-on: ${{ fromJSON(matrix.runner) }}
     # Mac jobs: the timeout includes the wait for the shared Mac's one-job lock.
     timeout-minutes: ${{ contains(toJSON(matrix), 'bm-mac') && 150 || 45 }}
     steps:
+      - name: Mac guard (40 GiB free, load1 < 20)
+        if: runner.os == 'macOS'
+        run: |
+          free=$(df -g "$HOME" | awk 'NR==2{print $4}')
+          echo "free GiB: $free"
+          [ "$free" -ge 40 ] || { echo "::error::Mac has $free GiB free (< 40): job refused"; exit 1; }
+          for i in $(seq 1 40); do
+            l=$(sysctl -n vm.loadavg | awk '{print int($2)}')
+            echo "load1: $l"
+            [ "$l" -lt 20 ] && exit 0
+            sleep 30
+          done
+          echo "::error::Mac load1 stayed >= 20: job refused"; exit 1
       - uses: actions/checkout@v4
       - name: Linux webview dependencies present (runner class sdk)
         if: runner.os == 'Linux'
